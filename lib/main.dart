@@ -4,7 +4,14 @@ void main() {
   runApp(Mainapp());
 }
 
-class Mainapp extends StatelessWidget {
+class Mainapp extends StatefulWidget {
+  @override
+  State<Mainapp> createState() => _MainappState();
+}
+
+class _MainappState extends State<Mainapp> {
+  String displayText = "No Data";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,6 +31,20 @@ class Mainapp extends StatelessWidget {
                 ),
               ),
             ),
+            MaterialButton(
+              color: Colors.white,
+              height: 50,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              onPressed: () {
+                setState(() {
+                  displayText = "Button Pressed!";
+                });
+              },
+              child: Text("Press here"),
+            ),
+            Text(displayText),
           ],
         ),
       ),
