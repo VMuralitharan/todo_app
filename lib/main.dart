@@ -47,6 +47,7 @@ class _MainappState extends State<Mainapp> {
                   onPressed: () {
                     setState(() {
                       taskList.add(textController.text);
+                      textController.clear();
                     });
                   },
                   child: Text(
@@ -72,7 +73,11 @@ class _MainappState extends State<Mainapp> {
 
                       MaterialButton(
                         child: Icon(Icons.delete, color: Colors.red),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            taskList.removeAt(index);
+                          });
+                        },
                       ),
                     ],
                   );
