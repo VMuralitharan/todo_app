@@ -11,6 +11,7 @@ class Mainapp extends StatefulWidget {
 
 class _MainappState extends State<Mainapp> {
   String displayText = "No Data";
+  List<String> taskList = [];
   TextEditingController textController = TextEditingController();
 
   @override
@@ -45,7 +46,7 @@ class _MainappState extends State<Mainapp> {
                   ),
                   onPressed: () {
                     setState(() {
-                      displayText = textController.text;
+                      taskList.add(textController.text);
                     });
                   },
                   child: Text(
@@ -58,14 +59,14 @@ class _MainappState extends State<Mainapp> {
 
             Flexible(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: taskList.length,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
                       Expanded(
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: Text("hello"),
+                          child: Text(taskList[index]),
                         ),
                       ),
 
